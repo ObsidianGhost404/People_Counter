@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6fa">
+  <meta name="description" content="Automatic Classroom People Counter — a real-time occupancy tracking project built with Arduino Uno, dual IR sensors, and an I2C LCD.">
+  <title>Automatic Classroom People Counter — Project Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="nav-wrap">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Project home"><span class="brand-mark"><i></i><i></i><i></i></span><span>PROJECT <b>01</b></span></a>
+      <div class="nav-links"><a href="#overview">Overview</a><a href="#how-it-works">How it works</a><a href="#team">Team</a></div>
+      <a class="nav-cta" href="#demo">Watch demo <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="live-dot"></span> ROBOTICS LAB · ADMISSION PROJECT</div>
+        <h1>Every entry.<br><span>Every exit.</span><br>Counted.</h1>
+        <p class="hero-lead">A smarter way to understand the room — with real-time people counting built from simple, accessible electronics.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#demo">Explore the demo <span>↓</span></a><a class="text-link" href="#overview">Discover the build <span>↗</span></a></div>
+        <div class="hero-footnote"><span class="mini-line"></span> BUILT BY FOUR ENGINEERING STUDENTS</div>
+      </div>
+      <div class="hero-visual reveal" aria-label="Project system overview illustration">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="glass-panel">
+          <div class="panel-top"><span class="tiny-label">LIVE OCCUPANCY SYSTEM</span><span class="status"><i></i> SYSTEM CONCEPT</span></div>
+          <div class="display-shell">
+            <div class="lcd">
+              <div class="lcd-brand">CLASSROOM MONITOR <span>●</span></div>
+              <div class="lcd-main"><small>PEOPLE INSIDE</small><strong id="occupancy">024</strong></div>
+              <div class="lcd-bottom"><span>IN <b id="in-count">031</b></span><span>OUT <b id="out-count">007</b></span></div>
+            </div>
+          </div>
+          <div class="signal-row"><div class="signal"><span class="signal-icon">↗</span><div><b>IR SENSOR 01</b><small>Entry detection</small></div><span class="signal-state"></span></div><div class="signal"><span class="signal-icon signal-blue">↙</span><div><b>IR SENSOR 02</b><small>Exit detection</small></div><span class="signal-state"></span></div></div>
+          <div class="panel-footer"><span>ARDUINO UNO</span><span class="footer-dot"></span><span>I²C LCD</span><span class="footer-right">5V ARCHITECTURE</span></div>
+        </div>
+        <div class="float-chip chip-one"><span class="chip-symbol">↔</span><span><b>Bi-directional</b><small>Entry + exit logic</small></span></div>
+        <div class="float-chip chip-two"><span class="chip-symbol chip-symbol-blue">⌁</span><span><b>Real-time</b><small>LCD feedback</small></span></div>
+        <div class="visual-caption">HARDWARE MEETS LOGIC <span>01 / 04</span></div>
+      </div>
+    </section>
+
+    <section class="stats container reveal" aria-label="Project facts">
+      <div class="stat"><span class="stat-number">02</span><span class="stat-label">IR sensors</span></div>
+      <div class="stat"><span class="stat-number">01</span><span class="stat-label">Arduino Uno</span></div>
+      <div class="stat"><span class="stat-number">16×2</span><span class="stat-label">I²C LCD display</span></div>
+      <div class="stat"><span class="stat-number">04</span><span class="stat-label">Team members</span></div>
+    </section>
+
+    <section id="overview" class="section container">
+      <div class="section-heading reveal"><div><div class="eyebrow muted">01 — THE IDEA</div><h2>Small hardware.<br><span>Useful intelligence.</span></h2></div><p>Manual counting can interrupt a class and invite mistakes. This prototype automates the count by detecting the order in which two IR sensors are triggered.</p></div>
+      <div class="overview-grid">
+        <article class="feature-card feature-large reveal"><div class="card-icon icon-purple">⌘</div><span class="card-kicker">THE CHALLENGE</span><h3>Know how many<br>people are inside.</h3><p>Classroom occupancy is easy to lose track of when people move in and out throughout the day.</p><div class="card-bottom"><span class="soft-tag">Manual tracking</span><span class="arrow-round">↗</span></div><div class="decor-ring"></div></article>
+        <article class="feature-card feature-solution reveal"><div class="card-icon icon-green">✓</div><span class="card-kicker">OUR APPROACH</span><h3>Automatic, directional counting.</h3><p>Two IR sensors identify the direction of movement. The Arduino updates the count and sends it to the LCD over I²C.</p><div class="card-bottom"><span class="soft-tag green-tag">Embedded system</span><span class="arrow-round">↗</span></div><div class="solution-glow"></div></article>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section section-tint">
+      <div class="container">
+        <div class="section-heading reveal"><div><div class="eyebrow muted">02 — UNDER THE HOOD</div><h2>From movement<br>to <span>a live count.</span></h2></div><p>A clear input → processing → output pipeline, built around inexpensive components and straightforward logic.</p></div>
+        <div class="pipeline reveal">
+          <div class="pipeline-line"><span></span><span></span><span></span></div>
+          <article class="step"><span class="step-no">01</span><div class="step-visual sensor-visual"><i class="sensor-beam"></i><i class="sensor-body"></i></div><h3>Detect</h3><p>Two IR sensors observe the sequence of movement at the doorway.</p><span class="step-chip">INPUT · IR × 2</span></article>
+          <article class="step"><span class="step-no">02</span><div class="step-visual chip-visual"><div class="chip-core">UNO</div></div><h3>Decide</h3><p>The Arduino checks which sensor triggers first to determine direction.</p><span class="step-chip">PROCESS · ARDUINO</span></article>
+          <article class="step"><span class="step-no">03</span><div class="step-visual display-visual"><div class="mini-lcd">IN 031<br>OUT 007</div></div><h3>Display</h3><p>The updated count is shown on the 16×2 LCD using the I²C interface.</p><span class="step-chip">OUTPUT · LCD</span></article>
+        </div>
+        <div class="logic-row reveal"><div class="logic-card"><span class="logic-arrow entry-arrow">↘</span><div><b>Entry sequence</b><p>Sensor 1 → Sensor 2</p></div><strong class="count-plus">COUNT +1</strong></div><div class="logic-card"><span class="logic-arrow exit-arrow">↗</span><div><b>Exit sequence</b><p>Sensor 2 → Sensor 1</p></div><strong class="count-minus">COUNT −1</strong></div></div>
+      </div>
+    </section>
+
+    <section id="demo" class="section container demo-section">
+      <div class="section-heading reveal"><div><div class="eyebrow muted">03 — SEE IT IN ACTION</div><h2>Built, tested,<br><span>and made tangible.</span></h2></div><p>Watch the project demonstration below. Sound is included in the original video — use the player controls to listen.</p></div>
+      <div class="video-frame reveal">
+        <div class="video-topbar"><div class="video-title"><span class="video-live"></span><div><b>PROJECT DEMONSTRATION</b><small>Automatic Classroom People Counter</small></div></div><span class="video-duration">DEMO · 00:32</span></div>
+        <video id="project-video" controls playsinline preload="metadata" poster="" aria-label="Automatic Classroom People Counter project demonstration">
+          <source src="assets/project-demo.mp4" type="video/mp4">
+          Your browser does not support HTML video. Please use a modern browser to view the demonstration.
+        </video>
+        <div class="video-caption"><span>REAL HARDWARE · REAL BUILD</span><span>VIDEO INCLUDES AUDIO ♪</span></div>
+      </div>
+      <div class="video-note reveal"><span class="note-icon">♪</span><p><b>Sound on for the full experience.</b><br>Playback starts only when you press play, so the page stays quiet until you choose to watch.</p><button id="sound-hint" class="sound-button" type="button">Audio tips <span>↗</span></button></div>
+    </section>
+
+    <section class="section container components-section">
+      <div class="section-heading reveal"><div><div class="eyebrow muted">04 — THE BUILD</div><h2>Three core parts.<br><span>One connected system.</span></h2></div><p>Designed around components that are affordable, widely available, and easy to understand.</p></div>
+      <div class="components-grid">
+        <article class="component-card reveal"><div class="component-art arduino-art"><div class="board"><span class="usb"></span><span class="microchip"></span><span class="pin-row"></span><span class="board-label">UNO</span></div></div><div class="component-meta"><span>01 / PROCESSING</span><span class="component-dot"></span></div><h3>Arduino Uno</h3><p>Runs the counting logic and interprets sensor sequences.</p></article>
+        <article class="component-card reveal"><div class="component-art ir-art"><div class="ir-module"><span class="ir-sensor"></span><span class="ir-pot"></span><span class="ir-pins"></span></div><div class="beam beam-a"></div><div class="beam beam-b"></div></div><div class="component-meta"><span>02 / INPUT</span><span class="component-dot"></span></div><h3>Dual IR sensors</h3><p>Detect movement direction based on which sensor is triggered first.</p></article>
+        <article class="component-card reveal"><div class="component-art lcd-art"><div class="lcd-device"><div class="lcd-screen">PEOPLE: 024<br>ROOM: ACTIVE</div><div class="lcd-buttons"></div></div></div><div class="component-meta"><span>03 / OUTPUT</span><span class="component-dot"></span></div><h3>16×2 I²C LCD</h3><p>Shows the live count with a compact four-wire display interface.</p></article>
+      </div>
+      <div class="pinout reveal"><div><span class="eyebrow muted">QUICK REFERENCE</span><h3>Pin mapping</h3></div><div class="pin-table"><div><span>IR sensor 1 · OUT</span><b>D2</b></div><div><span>IR sensor 2 · OUT</span><b>D3</b></div><div><span>LCD · SDA / SCL</span><b>A4 / A5</b></div><div><span>Power · VCC / GND</span><b>5V / GND</b></div></div></div>
+    </section>
+
+    <section id="team" class="team-section">
+      <div class="container team-content">
+        <div class="section-heading reveal"><div><div class="eyebrow">05 — THE PEOPLE</div><h2>Built by a team.<br><span>Driven by curiosity.</span></h2></div><p>Four students brought the idea together through hardware, logic, testing, and presentation.</p></div>
+        <div class="team-grid reveal">
+          <article class="member"><span class="member-index">01</span><div class="avatar avatar-a">DK</div><h3>Devansh Kashyap</h3><span>Project team</span></article>
+          <article class="member"><span class="member-index">02</span><div class="avatar avatar-b">AV</div><h3>Aniket Verma</h3><span>Project team</span></article>
+          <article class="member"><span class="member-index">03</span><div class="avatar avatar-c">CK</div><h3>Chirag Kaushik</h3><span>Project team</span></article>
+          <article class="member"><span class="member-index">04</span><div class="avatar avatar-d">AP</div><h3>Abhinav Dev Poonia</h3><span>Project team</span></article>
+        </div>
+        <div class="team-bottom"><span>ROBOTICS LAB ADMISSION PROJECT</span><span>BUILT WITH CURIOSITY · PRESENTED WITH PRIDE</span></div>
+      </div>
+    </section>
+
+    <section class="closing container reveal">
+      <div class="closing-orb"></div><div class="eyebrow muted">WHAT COMES NEXT</div><h2>A small prototype.<br><span>Room to grow.</span></h2><p>The next iteration could add Wi-Fi logging, occupancy-based automation, or camera-assisted crowd analysis — extending the same idea into smarter spaces.</p><a class="button button-dark" href="assets/project-documentation.pdf" target="_blank" rel="noopener">Read project documentation <span>↗</span></a>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><a class="brand" href="#top"><span class="brand-mark"><i></i><i></i><i></i></span><span>PROJECT <b>01</b></span></a><span>Automatic Classroom People Counter</span><a href="https://github.com/ObsedianGhost404" target="_blank" rel="noopener">GitHub · ObsedianGhost404 ↗</a><span class="copyright">© 2026 · Made by the team</span></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite">The video includes its original audio. Press play, then raise your device volume if needed.</div>
+  <script src="script.js"></script>
+</body>
+</html>
